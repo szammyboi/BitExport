@@ -118,3 +118,13 @@ func FromBytes(byte_src []byte, dest interface{}) interface{} {
 	}
 	return dest
 }
+
+// Should rewrite this so that the two could be bit packed together
+func MultipleToBytes(objs ...interface{}) []byte {
+	bytes := make([]byte, 0)
+
+	for _, obj := range objs {
+		bytes = append(bytes, ToBytes(obj)...)
+	}
+	return bytes
+}
